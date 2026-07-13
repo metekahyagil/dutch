@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Dutch B1 Curriculum",
   description: "A comprehensive Dutch language learning curriculum from A0 to B1",
-  base: '/',
+  base: '/dutch/',
   
   themeConfig: {
     logo: '/logo.svg',
