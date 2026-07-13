@@ -165,6 +165,41 @@ All content creators and AI agents should read:
 
 ---
 
+## Website (GitHub Pages)
+
+The curriculum is published as a static site built with VitePress, served at
+`https://metekahyagil.github.io/dutch/`.
+
+### How it's deployed
+
+- Source: `docs/` (VitePress project; config at `docs/.vitepress/config.mjs`).
+- GitHub Pages is configured as **Deploy from a branch** -- Branch: `master`, Folder: `/docs`.
+  No GitHub Actions/CI is used.
+- `docs/.nojekyll` disables GitHub's default Jekyll processing, so the VitePress build is served
+  as static files instead of GitHub trying to render Markdown itself.
+
+### Publishing changes
+
+Whenever `docs/*.md` content changes (new lessons, edited docs, updated sidebar/nav in
+`docs/.vitepress/config.mjs`), rebuild and republish before pushing:
+
+```
+npm run docs:publish
+```
+
+This runs `vitepress build docs` and then `scripts/publish-docs.js`, which removes previously
+generated files from `docs/` (old `*.html`, `assets/`, `hashmap.json`, `vp-icons.css`) and copies
+the fresh build in. It never touches `docs/*.md` sources, `docs/.vitepress/`, or `docs/.nojekyll`.
+Commit and push the result -- there is no CI step that does this for you.
+
+Other scripts:
+
+- `npm run docs:dev` -- local dev server
+- `npm run docs:build` -- build only, writes to `docs/.vitepress/dist` (does not update `docs/` itself)
+- `npm run docs:preview` -- preview a production build locally
+
+---
+
 ## License
 
 See `LICENSE.md`

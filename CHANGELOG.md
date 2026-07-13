@@ -20,6 +20,27 @@ Each entry includes:
 
 ## [Unreleased]
 
+### Fixed
+
+- **2026-07-13** -- GitHub Pages navbar not rendering. Root cause was twofold: (1) GitHub Pages
+  was serving from the repo root, where no `.nojekyll` file exists, so GitHub auto-ran Jekyll and
+  rendered the plain `README.md` with GitHub's default theme instead of the VitePress site at all
+  (confirmed via the `Jekyll v3.10.0` generator tag and default Jekyll footer on the live page);
+  (2) `docs/.vitepress/config.mjs` nav links hardcoded the `/dutch/` base path on top of VitePress's
+  own automatic `base` prefix, producing broken double-base hrefs like `/dutch/dutch/`. Fixed the
+  nav links in `docs/.vitepress/config.mjs`. Removed `.github/workflows/deploy.yml` (project uses
+  GitHub Pages "Deploy from a branch," not Actions/CI). Added `scripts/publish-docs.js` and the
+  `npm run docs:publish` script, which builds the site and syncs `docs/.vitepress/dist` into `docs/`
+  (cleaning previously generated files first, so stale hashed asset files from repeated manual
+  copies stop accumulating) so `docs/` always mirrors the latest build for GitHub Pages to serve
+  from Branch: `master`, Folder: `/docs`. Removed the unused `public/` folder -- a stale duplicate
+  of the built site left over from an earlier, incorrect assumption that GitHub Pages branch-deploy
+  can serve from `/public` (it can only serve from `/` or `/docs`). Updated `.gitignore` to drop the
+  stale comment referencing that assumption. Documented the deploy/publish workflow in `README.md`
+  ("Website (GitHub Pages)" section). **Author:** OpenCode Agent. **Reason:** Restore GitHub Pages
+  functionality (including the navbar) using the project's existing branch-deploy approach, without
+  introducing GitHub Actions/CI.
+
 ### Added
 
 - **2026-07-13** -- `docs/COMPETENCY_MAP.md` updated with new A0-05 competency "Counting and Basic Quantities" (previously missing). Competency includes can-do statements for counting 0-100, understanding quantities, basic money, and asking about amounts. Defines required grammar (cardinal/ordinal numbers, "hoeveel?" questions, plural forms), vocabulary (numbers, quantity words, money), pronunciation guidance, cultural notes on Dutch currency and number formatting, and assessment tasks. Inserted between "Describing Weather and Seasons" (A0 competency 8) and "A1 Competencies" section. **Author:** OpenCode Agent. **Reason:** Complete missing A0 competency definition required for A0-05 lesson planning; ensures COMPETENCY_MAP.md maintains all 28 competencies (7 A0, 11 A1, 7 A2, 9 B1) as specified in project scope.

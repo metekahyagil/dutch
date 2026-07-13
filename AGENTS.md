@@ -88,3 +88,13 @@ Field order matters and is exact -- see `docs/VOCABULARY_STANDARD.md` for rules 
 `Article` is `de`/`het`/`--`, pronunciation is an English approximation not IPA, example sentences may
 only use already-known vocabulary/grammar). Per-lesson and per-topic CSVs in `shared/csv/` are
 generated *from* the master, never hand-maintained separately.
+
+## Publishing the website
+
+The public site (`https://metekahyagil.github.io/dutch/`) is a VitePress build served by GitHub
+Pages via "Deploy from a branch" (Branch: `master`, Folder: `/docs`) -- there is no CI/Actions step.
+After any change to `docs/*.md` content or `docs/.vitepress/config.mjs`, run `npm run docs:publish`
+to rebuild and sync the output into `docs/`, then commit and push. See the "Website (GitHub Pages)"
+section in `README.md` for details. Never hand-edit the generated `docs/*.html` files or `docs/assets/`
+directly -- they are overwritten by `npm run docs:publish`.
+
