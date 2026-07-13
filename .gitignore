@@ -7,9 +7,8 @@ yarn.lock
 dist/
 *.tsbuildinfo
 
-# VitePress cache
+# VitePress cache (but keep dist/ for GitHub Pages hosting)
 docs/.vitepress/cache/
-docs/.vitepress/dist/
 
 # IDE
 .vscode/
