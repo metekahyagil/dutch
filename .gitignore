@@ -7,8 +7,10 @@ yarn.lock
 dist/
 *.tsbuildinfo
 
-# VitePress cache (but keep dist/ for GitHub Pages hosting)
+# VitePress cache
 docs/.vitepress/cache/
+
+# Public folder contains built site - DO NOT IGNORE (needed for GitHub Pages)
 
 # IDE
 .vscode/
