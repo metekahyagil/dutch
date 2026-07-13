@@ -10,8 +10,6 @@ dist/
 # VitePress cache
 docs/.vitepress/cache/
 
-# Public folder contains built site - DO NOT IGNORE (needed for GitHub Pages)
-
 # IDE
 .vscode/
 .idea/

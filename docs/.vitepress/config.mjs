@@ -10,9 +10,9 @@ export default defineConfig({
     siteTitle: 'Dutch Curriculum',
     
     nav: [
-      { text: 'Home', link: '/dutch/' },
-      { text: 'A0 (Foundations)', link: '/dutch/A0/' },
-      { text: 'Docs', link: '/dutch/README.html' }
+      { text: 'Home', link: '/' },
+      { text: 'A0 (Foundations)', link: '/A0/' },
+      { text: 'Docs', link: '/README.html' }
     ],
     
     sidebar: {
