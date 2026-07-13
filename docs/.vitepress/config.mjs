@@ -12,7 +12,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'A0 (Foundations)', link: '/A0/' },
-      { text: 'Docs', link: '/README' }
+      { text: 'Docs', link: '/README.html' }
     ],
     
     sidebar: {
