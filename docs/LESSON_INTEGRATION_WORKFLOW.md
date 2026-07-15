@@ -4,60 +4,43 @@ This document describes how to use the automated lesson integration workflow to 
 
 ## Overview
 
-The lesson integration workflow is a **single-command automation** that handles the entire process of creating a lesson from research output:
+The lesson integration workflow is a **single-command automation** that handles everything that
+must happen after a lesson's content has been written:
 
-1. ✅ Validate research output structure
-2. ✅ Archive research files
-3. ✅ Update CURRICULUM.md (mark lesson Complete)
-4. ✅ Update CHANGELOG.md with detailed entry
-5. ✅ Publish the site (`npm run docs:publish`)
-6. ✅ Commit and push to git (master branch)
-7. ✅ Display next pending lesson information
+1. Locate the lesson file and validate all 20 LESSON_STANDARD.md sections are present
+2. Archive the research response (if provided)
+3. Update `docs/CURRICULUM.md` (mark lesson Complete)
+4. Update `CHANGELOG.md` with a detailed entry
+5. Copy the lesson into `docs/[Level]/...` (VitePress source root)
+6. Add the lesson to `docs/.vitepress/config.mjs` sidebar (skipped if already present)
+7. Add the lesson to `docs/[Level]/index.md` landing page (skipped if already present)
+8. Publish the site (`npm run docs:publish` -- build + sync into `docs/`)
+9. **Verify** the resulting HTML file actually exists in `docs/` before committing anything
+10. Commit and push to `master`
+11. Display the next pending lesson
 
-**No manual steps. No manual git commands. No forgotten steps.**
+**No manual git commands. No manual VitePress config edits. No manual copying. No forgotten
+publish step.**
 
-## Before You Start
+## Division of Responsibility
 
-### Prerequisites
-
-1. **Research output completed externally** — You have gathered the research from external sources and have it ready as a markdown file
-2. **Lesson file already created** — The lesson file exists at `[CEFR Level]/Competency-[N]-[Name]/[Lesson ID].md` with all 20 sections from LESSON_STANDARD.md
-3. **VitePress config updated** — The lesson has already been added to `docs/.vitepress/config.mjs` sidebar
-4. **Lesson copied to docs/** — The lesson file has been copied to `docs/[CEFR Level]/...`
-
-### Research Output Format
-
-Your research file should be a markdown file with these 6 sections:
-
-```markdown
-# [Lesson ID] Research Output — [Competency Name]
-
-## Grammar Concepts
-[Explanations with examples]
-
-## Vocabulary
-[Table with Dutch, English, Article, Plural, POS, Example, Translation]
-
-## Example Sentences & Dialogues
-[Realistic dialogues]
-
-## Cultural Notes
-[Key insights]
-
-## Exercises
-[Exercise types with quantities]
-
-## Assessment Criteria
-[Mastery criteria]
-```
+- **You/the AI author** write the lesson's 20-section content file at its canonical location:
+  `[CEFR Level]/Competency-[N]-[Name]/[Lesson ID].md` (per `docs/LESSON_STANDARD.md`). This is a
+  content-authoring task that requires judgment and cannot be scripted.
+- **The script** (`scripts/integrate-lesson.js`) handles every mechanical step after that: syncing
+  to `docs/`, updating the sidebar and landing page, publishing, verifying, and committing/pushing.
+  These steps are deterministic, so they are never done by hand and never skipped.
 
 ## Usage
 
 ### Command Syntax
 
 ```bash
-npm run lesson:integrate <lesson-id> <research-file>
+npm run lesson:integrate <lesson-id> [research-response-file]
 ```
+
+The research response file is optional -- pass it only if you have not already archived the
+research output for this lesson under `shared/prompts/`.
 
 ### Example
 
@@ -65,237 +48,102 @@ npm run lesson:integrate <lesson-id> <research-file>
 npm run lesson:integrate A0-06 ./research-output.md
 ```
 
-Or manually:
+Or without a research file, if it's already archived:
 
 ```bash
-node scripts/integrate-lesson.js A0-06 ./research-output.md
+npm run lesson:integrate A0-06
 ```
 
-### What Gets Automated
+### Prerequisites
 
-#### 1. Validation
+Before running the script, only one thing must exist:
 
-The script checks that your research output has all 6 required sections:
-- Grammar Concepts
-- Vocabulary (30+ words recommended)
-- Example Sentences & Dialogues
-- Cultural Notes
-- Exercises
-- Assessment Criteria
+- **The lesson file**, at `[CEFR Level]/Competency-[N]-[Name]/[Lesson ID].md`, with all 20
+  sections from `docs/LESSON_STANDARD.md` in order (`## 1. Lesson Goal` through
+  `## 20. Quality Checklist`).
 
-**If validation fails:** The script stops and reports which sections are missing.
+Everything else (copying to `docs/`, sidebar, landing page, publish, commit, push) is handled by
+the script.
 
-#### 2. Archive Research Response
+### What Happens, Step by Step
 
-Your research output is saved to:
-
-```
-shared/prompts/[Lesson ID]-research-response.md
-```
-
-This creates a permanent audit trail of where the lesson content came from.
-
-#### 3. Update CURRICULUM.md
-
-The lesson is marked as **Complete ✅** in `docs/CURRICULUM.md`:
-
-**Before:**
-```markdown
-| 6 | A0-06 | Telling Time and Dates | ... | Pending | ... |
-```
-
-**After:**
-```markdown
-| 6 | A0-06 | Telling Time and Dates | ... | Complete ✅ | ... |
-```
-
-#### 4. Update CHANGELOG.md
-
-A detailed entry is added to the top of the "### Added" section:
-
-```markdown
-- **2026-07-15** -- `A0/Competency-6-Telling-Time-and-Dates/A0-06.md` created 
-  with complete lesson file. Covers telling time, days, months, dates, scheduling. 
-  Includes 43 vocabulary words. **Author:** External research + OpenCode integration. 
-  **Reason:** Complete A0-06 lesson.
-```
-
-#### 5. Publish the Site
-
-Runs `npm run docs:publish`, which:
-- Builds VitePress (`vitepress build docs` → `docs/.vitepress/dist/`)
-- Syncs the build output into `docs/` itself (where GitHub Pages serves from)
-- Cleans up stale artifacts from previous builds
-
-**Result:** Your website immediately reflects the new lesson.
-
-#### 6. Commit and Push
-
-All changes are automatically committed and pushed to `master`:
-
-```bash
-git add -A
-git commit -m "Complete A0-06 lesson (Telling Time and Dates)..."
-git push origin master
-```
-
-**Result:** GitHub Pages automatically deploys the update (no GitHub Actions needed).
-
-#### 7. Show Next Pending Lesson
-
-The script reads `docs/CURRICULUM.md` and displays:
-
-```
-✓ A0-06 complete!
-
-Next lesson ready: A0-R1 — Review Lesson 1
-Research request: shared/prompts/A0-R1-research-request.md
-```
-
----
-
-## Complete Workflow Example
-
-### Step 1: Do External Research
-
-You conduct research on a lesson (using your preferred research source or AI tool). You follow the structure in `docs/RESEARCH_GUIDELINES.md` and end up with a markdown file containing all 6 required sections.
-
-Save this file as: `./A0-06-research.md`
-
-### Step 2: Create Lesson File (Manual)
-
-Using the research output, you (or the research agent) create the full 20-section lesson file:
-
-```
-A0/Competency-6-Telling-Time-and-Dates/A0-06.md
-```
-
-This file must have all 20 sections per LESSON_STANDARD.md:
-1. Lesson Header
-2. Lesson Goal
-3. Previous Knowledge
-4. Why This Matters
-5. Grammar
-6. Grammar Reasoning
-7. Vocabulary
-8. Pronunciation
-9. Dialogue
-10. Reading
-11. Listening
-12. Speaking
-13. Writing
-14. Common Mistakes
-15. Dutch Insight
-16. Memory Tricks
-17. Active Recall
-18. Quiz
-19. Homework
-20. Summary
-
-(Note: Future versions will automate this step too, but for now it requires manual effort)
-
-### Step 3: Copy to VitePress (Manual)
-
-Copy the lesson to the VitePress docs folder:
-
-```bash
-cp A0/Competency-6-Telling-Time-and-Dates/A0-06.md \
-   docs/A0/Competency-6-Telling-Time-and-Dates/A0-06.md
-```
-
-### Step 4: Update VitePress Config (Manual)
-
-Add the lesson to `docs/.vitepress/config.mjs` sidebar:
-
-```javascript
-{
-  text: 'Competency 6: Telling Time and Dates',
-  collapsed: false,
-  items: [
-    { text: 'Lesson A0-06', link: '/A0/Competency-6-Telling-Time-and-Dates/A0-06' }
-  ]
-}
-```
-
-### Step 5: Run the Integration Script (Automated)
-
-```bash
-npm run lesson:integrate A0-06 ./A0-06-research.md
-```
-
-**The script now handles everything:**
-- ✅ Validates research output
-- ✅ Archives research response
-- ✅ Updates CURRICULUM.md
-- ✅ Updates CHANGELOG.md
-- ✅ Publishes the site
-- ✅ Commits and pushes to git
-- ✅ Shows next lesson information
+1. **Locate + validate.** Searches `A0/`, `A1/`, `A2/`, `B1/` for `[Lesson ID].md` and checks every
+   required `## N. Title` heading is present. Aborts with a clear error if the file is missing or
+   incomplete -- nothing else runs.
+2. **Archive research response** (only if a file was passed) to
+   `shared/prompts/[Lesson ID]-research-response.md`.
+3. **Update `docs/CURRICULUM.md`** -- marks the lesson row Complete. Skipped if already Complete.
+4. **Update `CHANGELOG.md`** -- adds an entry under `### Added`. Skipped if an entry already
+   mentions this lesson file.
+5. **Copy into `docs/`** -- mirrors `[Level]/Competency-.../[Lesson ID].md` into
+   `docs/[Level]/Competency-.../[Lesson ID].md` (VitePress's source root).
+6. **Sidebar** -- checks `docs/.vitepress/config.mjs` for a link to this lesson; inserts a new
+   competency block if missing.
+7. **Landing page** -- checks `docs/[Level]/index.md` for a link to this lesson; inserts a new
+   `### Competency N: Name` section if missing.
+8. **Publish** -- runs `npm run docs:publish` (`vitepress build docs` then
+   `scripts/publish-docs.js`, which syncs the build into `docs/`). This is the folder GitHub Pages
+   serves (Branch: `master`, Folder: `/docs`). `docs:build` alone is never used here because it
+   only writes to `docs/.vitepress/dist/`, which is not served.
+9. **Verify** -- confirms `docs/[Level]/Competency-.../[Lesson ID].html` actually exists on disk.
+   If the build didn't produce it, the script stops here with an error and does **not** commit,
+   so a broken/incomplete state never gets pushed.
+10. **Commit and push** -- `git add -A`, commit as `Add [Lesson ID]: [Competency Name]`, push to
+    `master`.
+11. **Next lesson** -- reads the first `Pending` row from `docs/CURRICULUM.md` and prints it.
 
 ---
 
 ## Troubleshooting
 
-### Build Failed
+### "Could not find [Lesson ID].md"
 
-**Error message:**
-```
-[✗] Build failed: ...
-```
+The lesson content file hasn't been written yet, or isn't at the expected path
+(`[Level]/Competency-[N]-[Name]/[Lesson ID].md`). Write it first per `docs/LESSON_STANDARD.md`.
 
-**Solution:**
-Check the lesson file for syntax errors. The most common issues are:
+### "is missing required sections (or out of order)"
+
+One or more of the 20 `## N. Title` headings is missing, misnumbered, or misspelled. Compare
+against `docs/LESSON_STANDARD.md` and the list in the script's `REQUIRED_SECTIONS`.
+
+### "docs:publish failed"
+
+The VitePress build itself failed. Common causes:
 - Unclosed markdown tables
-- Incorrect heading levels (must be `##` only, not `###` or `####`)
+- Heading levels other than `##` used for section titles
 - Broken links to `/shared/` files that don't exist
 
-Fix the errors and run the script again.
+Fix the lesson file and rerun the script.
 
-### Git Push Failed
+### "Expected ... was not created by the build"
 
-**Error message:**
-```
-[!] Git push failed, but lesson is otherwise complete
-```
+The build succeeded but didn't produce the expected HTML file -- usually means the lesson wasn't
+placed in the folder the script expected, or the sidebar link path doesn't match the file location.
+Nothing was committed; safe to fix and rerun.
 
-**Solution:**
-This usually means there are uncommitted changes or a network issue. The lesson files are still created and the site is still published locally. You can manually push:
+### Git push failed
+
+Resolve the underlying git issue (auth, conflicts, network) and push manually:
 
 ```bash
-cd /path/to/Dutch-B1-Curriculum
 git push origin master
 ```
 
-### Validation Failed
-
-**Error message:**
-```
-[✗] Missing sections: Grammar Concepts, Vocabulary
-```
-
-**Solution:**
-Your research file is missing required sections. Add them before running the script again. See "Research Output Format" above.
+Everything else (lesson file, docs/ copy, CURRICULUM.md, CHANGELOG.md) is already correct locally
+even if the push itself failed.
 
 ---
 
 ## What NOT to Do
 
-❌ **Don't run manual git commands** after the lesson is created — the script handles this
-❌ **Don't manually run `npm run docs:build`** — use `npm run docs:publish` instead
-❌ **Don't manually copy files to `docs/.vitepress/dist/`** — the publish script handles this
-❌ **Don't manually edit generated HTML** — it will be overwritten next publish
-
----
-
-## For Future Enhancement
-
-Once lesson file creation is also automated, the entire workflow will be:
-
-```bash
-npm run lesson:integrate A0-07 ./research-output.md
-```
-
-And **every single step** (validate → create lesson → archive → update docs → publish → commit → push) will be handled automatically.
+- Don't run `npm run docs:build` alone expecting the site to update -- it only writes to
+  `docs/.vitepress/dist/`, which is not served. Use `npm run docs:publish` or, better, let
+  `npm run lesson:integrate` handle it.
+- Don't manually edit generated HTML under `docs/*.html` or `docs/assets/` -- it is overwritten
+  every publish.
+- Don't hand-edit `docs/.vitepress/dist/` -- it's a build cache, not committed, not served.
+- Don't create multiple lessons in parallel -- process one lesson at a time, in strict curricular
+  order, per `docs/CURRICULUM.md`.
 
 ---
 
@@ -306,6 +154,7 @@ For issues or questions:
 2. Check `docs/RESEARCH_GUIDELINES.md` (research standards)
 3. Check `docs/LESSON_STANDARD.md` (lesson structure requirements)
 4. Check `AGENTS.md` (workflow overview)
+5. Check the `dutch-lesson-integration` skill definition for the full end-to-end process
 
 ---
 

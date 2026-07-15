@@ -1,6 +1,6 @@
 // Syncs the VitePress build output (docs/.vitepress/dist) into docs/ itself,
 // so GitHub Pages can serve the site directly via "Deploy from a branch"
-// (Branch: master, Folder: /docs) without needing GitHub Actions.
+// (Branch: master, Folder: /docs).
 //
 // Run via: npm run docs:publish
 //

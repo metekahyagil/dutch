@@ -174,23 +174,30 @@ The curriculum is published as a static site built with VitePress, served at
 
 - Source: `docs/` (VitePress project; config at `docs/.vitepress/config.mjs`).
 - GitHub Pages is configured as **Deploy from a branch** -- Branch: `master`, Folder: `/docs`.
-  No GitHub Actions/CI is used.
+  Pushing to `master` is the only deploy step; GitHub Pages picks up whatever is committed in
+  `docs/` directly.
 - `docs/.nojekyll` disables GitHub's default Jekyll processing, so the VitePress build is served
   as static files instead of GitHub trying to render Markdown itself.
 
 ### Publishing changes
 
 Whenever `docs/*.md` content changes (new lessons, edited docs, updated sidebar/nav in
-`docs/.vitepress/config.mjs`), rebuild and republish before pushing:
+`docs/.vitepress/config.mjs`), rebuild and sync before committing/pushing:
 
 ```
 npm run docs:publish
 ```
 
-This runs `vitepress build docs` and then `scripts/publish-docs.js`, which removes previously
-generated files from `docs/` (old `*.html`, `assets/`, `hashmap.json`, `vp-icons.css`) and copies
-the fresh build in. It never touches `docs/*.md` sources, `docs/.vitepress/`, or `docs/.nojekyll`.
-Commit and push the result -- there is no CI step that does this for you.
+This runs `vitepress build docs` (writes to `docs/.vitepress/dist/`, a build cache that is not
+committed) and then `scripts/publish-docs.js`, which copies that fresh build into `docs/` itself --
+the folder GitHub Pages actually serves. Running `npm run docs:build` alone is not enough; it never
+touches `docs/` and the site will not update.
+
+For full end-to-end lesson integration (content + docs + publish + commit + push in one step), use
+`npm run lesson:integrate <lesson-id>` -- see `docs/LESSON_INTEGRATION_WORKFLOW.md`.
+
+Commit and push the result yourself after publishing -- there is no automated step that does this
+for plain `docs:publish` runs (only `lesson:integrate` commits and pushes automatically).
 
 Other scripts:
 
