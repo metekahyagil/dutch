@@ -24,6 +24,16 @@ Master greetings, politeness expressions, and basic courtesies.
 
 - **[Lesson A0-04](/A0/Competency-4-Greeting-and-Politeness/A0-04)**
 
+### Competency 5: Counting and Quantities
+Learn numbers 0-100, quantities, and basic money vocabulary.
+
+- **[Lesson A0-05](/A0/Competency-5-Counting-and-Quantities/A0-05)**
+
+### Competency 6: Telling Time and Dates
+Learn to tell time, and use days, months, and seasons.
+
+- **[Lesson A0-06](/A0/Competency-6-Telling-Time-and-Dates/A0-06)**
+
 ---
 
 ## How to Use This Curriculum
