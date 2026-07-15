@@ -26,7 +26,7 @@ Each lesson corresponds to ONE competency from `docs/COMPETENCY_MAP.md`.
 | 3 | A0-03 | Describing People and Family | Family members, adjectives, demonstratives, possession | Complete ✅ | `shared/prompts/A0-03-research-request.md` | Family vocabulary & agreement |
 | 4 | A0-04 | Greeting and Basic Politeness | Greetings, politeness formulas, time of day | Complete ✅ | `shared/prompts/A0-04-research-request.md` | Social protocols |
 | 5 | A0-05 | Counting and Basic Quantities | Numbers 0-100, quantities, basic money | Complete ✅ | `shared/prompts/A0-05-research-request.md` | Numeric literacy |
-| 6 | A0-06 | Telling Time and Dates | Days, months, seasons, time expressions | Pending | `shared/prompts/A0-06-research-request.md` | Temporal expressions |
+| 6 | A0-06 | Telling Time and Dates | Days, months, seasons, time expressions | Complete ✅ | `shared/prompts/A0-06-research-request.md` | Temporal expressions |
 | 7 | A0-R1 | Review Lesson 1 | Review of A0-01 through A0-06 | Pending | N/A (no new grammar/vocab) | Consolidation, no new material |
 
 ---
