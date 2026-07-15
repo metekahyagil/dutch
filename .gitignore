@@ -31,3 +31,6 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+
+# Scratch verification scripts (not part of the project)
+check-*.mjs
