@@ -331,4 +331,4 @@ B1 Sophistication:
 
 All grammar concepts have been mapped and sequenced. The next Phase 2 deliverable is:
 - **`docs/VOCABULARY_ROADMAP.md`** -- Topic-by-topic vocabulary progression and word counts
-- **`shared/vocabulary/master.csv`** -- Master vocabulary database
+- **`shared/vocabulary/{nouns,verbs,adjectives,other}.csv`** -- Master vocabulary database (split by part of speech)

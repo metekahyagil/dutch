@@ -31,7 +31,7 @@ Use this to validate your work.
 
 - [ ] **No unknown vocabulary introduced**
   - Check `docs/VOCABULARY_ROADMAP.md`
-  - Check `shared/vocabulary/master.csv`
+  - Check `shared/vocabulary/nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv`
   - All vocabulary is either:
     - Taught in this lesson, OR
     - Taught in a previous lesson, OR
@@ -42,8 +42,8 @@ Use this to validate your work.
   - Vocabulary is essential for the level
   - No rare or irrelevant words
 
-- [ ] **All vocabulary exists in master database**
-  - Each word appears in `shared/vocabulary/master.csv`
+- [ ] **All vocabulary exists in the vocabulary database**
+  - Each word appears in the correct `shared/vocabulary/*.csv` file for its part of speech
   - CSV entry includes all required fields
   - Pronunciation is provided
   - Example sentence is provided
@@ -205,7 +205,7 @@ Use this to validate your work.
   - Prerequisites are cross-referenced correctly
 
 - [ ] **Vocabulary CSV is updated**
-  - `shared/vocabulary/master.csv` includes all new words
+  - `shared/vocabulary/{nouns,verbs,adjectives,other}.csv` includes all new words, filed under the correct part of speech
   - CSV entries have all required fields
   - Duplicate entries are removed
 
@@ -274,7 +274,7 @@ Before submitting a lesson:
 **Issue:** Your examples use words not in the vocabulary list.
 
 **Fix:**
-1. Check `shared/vocabulary/master.csv`
+1. Check `shared/vocabulary/nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv`
 2. Either add the word to this lesson's vocabulary, OR
 3. Remove it and use a known word instead
 

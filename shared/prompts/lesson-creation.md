@@ -87,8 +87,8 @@ STEP 2 - CHECK EXISTING STATE (do not assume, verify by reading the files)
    in an earlier lesson (if it is, stop and flag this -- do not duplicate).
    List every grammar concept this lesson is allowed to use (this lesson's
    own concept plus anything already marked "Complete" in an earlier lesson).
-3. Open docs/VOCABULARY_ROADMAP.md and shared/vocabulary/master.csv. Build the
-   exact list of vocabulary this lesson is allowed to use: anything already
+3. Open docs/VOCABULARY_ROADMAP.md and shared/vocabulary/{nouns,verbs,adjectives,other}.csv.
+   Build the exact list of vocabulary this lesson is allowed to use: anything already
    present with an earlier "Lesson Introduced" value, plus up to
    {{NEW_VOCAB_COUNT}} new words you will introduce in this lesson.
 4. List the files in the unit folder (e.g.
@@ -128,13 +128,17 @@ If {{GRAMMAR_FOCUS}} has no existing file in shared/grammar/, also create
 docs/GRAMMAR_STANDARD.md's full structure (all 13 sections), and reference it
 from the lesson's Grammar section instead of duplicating the explanation.
 
-If {{NEW_VOCAB_COUNT}} > 0, add each new word as a row to
-shared/vocabulary/master.csv following the exact schema in
-docs/VOCABULARY_STANDARD.md:
-Dutch,English,Article,Plural,Pronunciation,Part of Speech,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
-(create the file with this header row if it does not exist yet). The
-lesson's own Vocabulary section references master.csv; it does not redefine
-entries.
+If {{NEW_VOCAB_COUNT}} > 0, add each new word as a row to the correct
+shared/vocabulary/*.csv file for its part of speech, following the exact
+schema in docs/VOCABULARY_STANDARD.md:
+- Nouns -> nouns.csv: Dutch,English,Article,Plural,Diminutive,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+- Verbs -> verbs.csv: Dutch,English,Verb Type,Present (ik),Present (jij/u/hij/zij/het),Present (wij/jullie/zij),Simple Past (singular),Simple Past (plural),Auxiliary,Past Participle,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+- Adjectives -> adjectives.csv: Dutch,English,Comparative,Superlative,Inflected Form,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+- Everything else (adverbs, prepositions, conjunctions, pronouns, articles,
+  determiners, interjections, numerals) -> other.csv: Dutch,English,Part of Speech,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+(create a file with its header row if it does not exist yet). The
+lesson's own Vocabulary section references these CSV files; it does not
+redefine entries.
 
 STEP 5 - UPDATE THE SHARED TRACKING FILES
 1. docs/CURRICULUM.md -- add or confirm the row for {{LESSON_ID}} (competency,

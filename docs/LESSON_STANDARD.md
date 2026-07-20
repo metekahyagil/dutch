@@ -129,9 +129,9 @@ If the lesson introduces vocabulary:
 
 This lesson introduces **25 new vocabulary words.**
 
-All vocabulary is stored in the master database:
+All vocabulary is stored in the vocabulary CSVs, split by part of speech:
 
-**See:** `/shared/vocabulary/master.csv` (Filter by Lesson A0-02)
+**See:** `/shared/vocabulary/nouns.csv` (Filter by Lesson A0-02)
 
 Key words for this lesson:
 
@@ -498,7 +498,7 @@ Before submitting a lesson, ensure:
 - [ ] No unknown vocabulary is used
 - [ ] Reading only contains known grammar/vocab
 - [ ] Grammar references link to existing files
-- [ ] Vocabulary references link to master.csv
+- [ ] Vocabulary references link to the correct `shared/vocabulary/*.csv` file (nouns/verbs/adjectives/other)
 - [ ] All examples are practical and realistic
 - [ ] Dialogue sounds natural
 - [ ] Pronunciation guidance is accurate

@@ -278,7 +278,7 @@ that already has a single authoritative home elsewhere:
 | What lessons/units exist and how do they depend on each other? | `docs/CURRICULUM.md` |
 | What is the exact lesson template? | `docs/LESSON_STANDARD.md` |
 | What grammar exists and when is it taught? | `docs/GRAMMAR_MAP.md`, `shared/grammar/` |
-| What vocabulary exists and when is it taught? | `docs/VOCABULARY_ROADMAP.md`, `shared/vocabulary/master.csv` |
+| What vocabulary exists and when is it taught? | `docs/VOCABULARY_ROADMAP.md`, `shared/vocabulary/{nouns,verbs,adjectives,other}.csv` |
 | How are review lessons built? | `docs/REVIEW_STRATEGY.md` |
 | How should content be formatted? | `docs/STYLE_GUIDE.md` |
 | How should AI agents behave? | `docs/AI_GUIDELINES.md` |

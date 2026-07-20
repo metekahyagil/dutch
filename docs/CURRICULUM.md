@@ -27,7 +27,7 @@ Each lesson corresponds to ONE competency from `docs/COMPETENCY_MAP.md`.
 | 4 | A0-04 | Greeting and Basic Politeness | Greetings, politeness formulas, time of day | Complete ✅ | `shared/prompts/A0-04-research-request.md` | Social protocols |
 | 5 | A0-05 | Counting and Basic Quantities | Numbers 0-100, quantities, basic money | Complete ✅ | `shared/prompts/A0-05-research-request.md` | Numeric literacy |
 | 6 | A0-06 | Telling Time and Dates | Days, months, seasons, time expressions | Complete ✅ | `shared/prompts/A0-06-research-request.md` | Temporal expressions |
-| 7 | A0-R1 | Review Lesson 1 | Review of A0-01 through A0-06 | Pending | N/A (no new grammar/vocab) | Consolidation, no new material |
+| 7 | A0-R1 | Review Lesson 1 | Review of A0-01 through A0-06 | Complete ✅ | `shared/prompts/A0-R1-research-request.md` | Consolidation, no new material |
 
 ---
 
@@ -83,7 +83,7 @@ Each lesson corresponds to ONE competency from `docs/COMPETENCY_MAP.md`.
 
 - **Total Lessons:** 34 (28 content lessons + 4 review lessons)
 - **Review Lessons:** After every 5-7 lessons, one review lesson with no new material
-- **Status:** All Pending (ready for research)
+- **Status:** 7/34 Complete (A0 level + A0-R1); 27 Pending
 
 ---
 

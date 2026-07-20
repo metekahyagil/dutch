@@ -27,23 +27,28 @@ Every vocabulary word in a lesson must be in one of these places:
 1. Taught in a previous lesson in the same level or earlier
 2. Taught in the current lesson (up to 35 new words)
 3. Listed in the lesson's vocabulary section
-4. In `shared/vocabulary/master.csv` with the current lesson as its introduction
+4. In `shared/vocabulary/{nouns,verbs,adjectives,other}.csv` with the current lesson as its
+   introduction
 
-**Check:** Before writing a lesson, verify every word exists in `shared/vocabulary/master.csv`.
+**Check:** Before writing a lesson, verify every word exists in the appropriate
+`shared/vocabulary/*.csv` file for its part of speech.
 
 ### 3. Vocabulary Exists Only Once
 
-Vocabulary definitions are in `shared/vocabulary/master.csv` only.
+Vocabulary definitions are in `shared/vocabulary/nouns.csv`, `verbs.csv`, `adjectives.csv`, and
+`other.csv` only -- split by part of speech (nouns get article/plural/diminutive, verbs get full
+conjugations, adjectives get comparative/superlative/inflected form, everything else lives in
+`other.csv`).
 
 A lesson never contains vocabulary definitions.
 
 A lesson may reference the master vocabulary:
 
 ```
-**See:** `/shared/vocabulary/master.csv` (Filter by Lesson A0-01)
+**See:** `/shared/vocabulary/nouns.csv`, `/shared/vocabulary/verbs.csv` (Filter by Lesson A0-01)
 ```
 
-**Exception:** Vocabulary tables in a lesson may reference the word and translation for clarity, but the authoritative definition is always in the master.
+**Exception:** Vocabulary tables in a lesson may reference the word and translation for clarity, but the authoritative definition is always in the vocabulary CSVs.
 
 ### 4. Grammar Explanations Exist Only Once
 
@@ -169,10 +174,10 @@ Example from GRAMMAR_MAP.md:
 
 ### Step 3: Check Vocabulary
 
-Read `docs/VOCABULARY_ROADMAP.md` and `shared/vocabulary/master.csv` to:
+Read `docs/VOCABULARY_ROADMAP.md` and `shared/vocabulary/{nouns,verbs,adjectives,other}.csv` to:
 
 - [ ] Identify vocabulary needed for this lesson
-- [ ] Verify it's in the master database
+- [ ] Verify it's in the correct vocabulary CSV for its part of speech
 - [ ] Note how many new words this lesson introduces
 
 ### Step 4: Review Previous Lessons
@@ -255,9 +260,9 @@ In Dutch, we use **zijn** (to be) to describe people and things.
 
 We'll introduce 25 new words in this lesson.
 
-All vocabulary is stored in the master database:
+All vocabulary is stored in the vocabulary CSVs, split by part of speech:
 
-**See:** `/shared/vocabulary/master.csv` (Filter by Lesson A1-05)
+**See:** `/shared/vocabulary/nouns.csv` (Filter by Lesson A1-05)
 
 | Dutch | English | Article | Plural |
 |-------|---------|---------|---------|
@@ -297,7 +302,7 @@ Before writing an example, check:
 1. **Using grammar before it's taught** -- Always check GRAMMAR_MAP.md first
 2. **Using vocabulary before it's introduced** -- Always check VOCABULARY_ROADMAP.md first
 3. **Duplicating grammar explanations** -- Always reference shared files
-4. **Duplicating vocabulary definitions** -- Always reference master.csv
+4. **Duplicating vocabulary definitions** -- Always reference the vocabulary CSVs (nouns/verbs/adjectives/other)
 5. **Not following the lesson standard** -- Every section is required
 6. **Overly complex language** -- Simplify your explanations
 7. **Too many new concepts in one lesson** -- One concept per lesson

@@ -90,7 +90,7 @@ The authoring system.
 The teaching infrastructure.
 
 - `shared/grammar/` -- Referenced grammar explanations
-- `shared/vocabulary/` -- Master vocabulary database
+- `shared/vocabulary/` -- Vocabulary database (`nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv`)
 - `shared/templates/` -- Content templates
 - `shared/prompts/` -- AI prompts
 - `shared/assets/` -- Images and media

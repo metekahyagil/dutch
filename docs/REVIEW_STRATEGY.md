@@ -101,7 +101,7 @@ A table of all vocabulary from the 5 previous lessons.
 
 **All vocabulary from Lessons A0-01 through A0-05:**
 
-[Generate from master.csv where "Lesson Introduced" in (A0-01, A0-02, A0-03, A0-04, A0-05)]
+[Generate from nouns.csv/verbs.csv/adjectives.csv/other.csv where "Lesson Introduced" in (A0-01, A0-02, A0-03, A0-04, A0-05)]
 
 | Dutch | English | Article | Example |
 |-------|---------|---------|---------|

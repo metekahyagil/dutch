@@ -40,7 +40,7 @@ import{_ as i,o as n,c as a,a0 as e}from"./chunks/framework.Cp0xpwNH.js";const d
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;">**All vocabulary from Lessons A0-01 through A0-05:**</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[Generate from master.csv where &quot;Lesson Introduced&quot; in (A0-01, A0-02, A0-03, A0-04, A0-05)]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[Generate from nouns.csv/verbs.csv/adjectives.csv/other.csv where &quot;Lesson Introduced&quot; in (A0-01, A0-02, A0-03, A0-04, A0-05)]</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">| Dutch | English | Article | Example |</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">|-------|---------|---------|---------|</span></span>

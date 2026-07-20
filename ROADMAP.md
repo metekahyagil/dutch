@@ -27,7 +27,7 @@ each later document is generated from the one(s) before it:
       driven by the competencies above. Use `shared/prompts/grammar-progression-research.md`.
 - [ ] `docs/VOCABULARY_ROADMAP.md` -- Vocabulary topics, target word counts, lesson placement, driven
       by the competencies above. Use `shared/prompts/vocabulary-progression-research.md`.
-- [ ] `shared/vocabulary/master.csv` -- Master vocabulary database
+- [ ] `shared/vocabulary/{nouns,verbs,adjectives,other}.csv` -- Vocabulary database, split by part of speech
 - [ ] `docs/CURRICULUM.md` -- Complete unit/lesson roadmap with dependencies, generated from the
       Competency Map, Grammar Map, and Vocabulary Roadmap
 

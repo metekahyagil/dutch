@@ -16,11 +16,14 @@ in `docs/` and checking things off the checklists they contain.
   are stubs ("To be completed in Phase 2"). Only a partial A0 grammar table exists as an example.
   Complete `docs/COMPETENCY_MAP.md` first -- `docs/CURRICULUM.md`, `docs/GRAMMAR_MAP.md`, and
   `docs/VOCABULARY_ROADMAP.md` are meant to be generated from it.
-- `shared/grammar/`, `shared/vocabulary/`, `shared/templates/`, `shared/assets/`,
+- `shared/grammar/`, `shared/templates/`, `shared/assets/`,
   `shared/csv/`, `agents/`, and all of `A0/ A1/ A2/ B1/` are **empty**. `shared/prompts/` contains
   reusable prompt templates for lesson creation and for the Phase 2 research tasks below.
-- `shared/vocabulary/master.csv` -- the single source of truth referenced everywhere -- **does not
-  exist yet.** Don't assume you can "look up" a word there; you may need to create it.
+- `shared/vocabulary/` -- the single source of truth for vocabulary, referenced everywhere -- has
+  four files split by part of speech: `nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv`
+  (everything else: adverbs, prepositions, conjunctions, pronouns, articles, determiners,
+  interjections, numerals). Currently only A0-01's ~25 words are populated; the rest of the
+  curriculum's vocabulary still needs to be researched and added.
 - See `ROADMAP.md` for phase order and `CHANGELOG.md` for what's actually been added so far.
 - The file `../Chat.md` (one level up, outside this repo) was the original planning transcript that
   proposed the Curriculum Principles document, the detailed CEFR breakdown, and the competency-driven
@@ -47,12 +50,12 @@ in `docs/` and checking things off the checklists they contain.
   (real-world can-do abilities); `docs/CURRICULUM.md` (units/lessons) is generated from it, never the
   other way around. Do not invent a target lesson count for a level.
 - **Single source of truth, no duplication.** Vocabulary definitions live only in
-  `shared/vocabulary/master.csv`; grammar explanations live only in `shared/grammar/*.md`. Lessons
-  **reference** these (`**See:** /shared/grammar/...` or `/shared/vocabulary/master.csv`), they never
-  redefine them.
+  `shared/vocabulary/{nouns,verbs,adjectives,other}.csv`; grammar explanations live only in
+  `shared/grammar/*.md`. Lessons **reference** these (`**See:** /shared/grammar/...` or
+  `/shared/vocabulary/nouns.csv`), they never redefine them.
 - **No grammar or vocabulary before it's taught.** Before writing any lesson content, cross-check
-  `docs/GRAMMAR_MAP.md` and `docs/VOCABULARY_ROADMAP.md`/`master.csv` for what's already available.
-  Reading/dialogue/exercise text may only use previously-taught or current-lesson items.
+  `docs/GRAMMAR_MAP.md` and `docs/VOCABULARY_ROADMAP.md`/`shared/vocabulary/*.csv` for what's already
+  available. Reading/dialogue/exercise text may only use previously-taught or current-lesson items.
 - **One new grammar concept per lesson**, **20–35 new vocabulary words max** per lesson.
 - **Review lessons** occur after every 5 lessons, introduce **zero** new grammar/vocabulary, and only
   consolidate prior material.
@@ -78,16 +81,22 @@ in `docs/` and checking things off the checklists they contain.
 - Every lesson/grammar file starts with a metadata block (`**Level:**`, `**CEFR Level:**`, etc.) -- see
   `docs/STYLE_GUIDE.md` "Metadata Headers".
 
-## Vocabulary CSV schema (`shared/vocabulary/master.csv`, one row per word)
+## Vocabulary CSV schema (`shared/vocabulary/`, one row per word, split by part of speech)
+
+Vocabulary is split into four files, each with only the columns relevant to that part of speech:
 
 ```
-Dutch,English,Article,Plural,Pronunciation,Part of Speech,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+nouns.csv:      Dutch,English,Article,Plural,Diminutive,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+verbs.csv:      Dutch,English,Verb Type,Present (ik),Present (jij/u/hij/zij/het),Present (wij/jullie/zij),Simple Past (singular),Simple Past (plural),Auxiliary,Past Participle,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+adjectives.csv: Dutch,English,Comparative,Superlative,Inflected Form,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+other.csv:      Dutch,English,Part of Speech,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
 ```
 
-Field order matters and is exact -- see `docs/VOCABULARY_STANDARD.md` for rules per column (e.g.
-`Article` is `de`/`het`/`--`, pronunciation is an English approximation not IPA, example sentences may
-only use already-known vocabulary/grammar). Per-lesson and per-topic CSVs in `shared/csv/` are
-generated *from* the master, never hand-maintained separately.
+`other.csv` covers adverbs, prepositions, conjunctions, pronouns, articles, determiners,
+interjections, and numerals. Field order matters and is exact -- see `docs/VOCABULARY_STANDARD.md`
+for rules per column (e.g. `Article` is `de`/`het`, pronunciation is an English approximation not
+IPA, example sentences may only use already-known vocabulary/grammar). Per-lesson and per-topic
+CSVs in `shared/csv/` are generated *from* these four files, never hand-maintained separately.
 
 ## Publishing the website
 

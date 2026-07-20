@@ -83,7 +83,10 @@ import{_ as i,o as a,c as n,a0 as e}from"./chunks/framework.Cp0xpwNH.js";const c
 <span class="line"><span>│   │   ├── present-tense-to-be.md</span></span>
 <span class="line"><span>│   │   └── [more grammar files]</span></span>
 <span class="line"><span>│   └── vocabulary/</span></span>
-<span class="line"><span>│       └── master.csv</span></span>
+<span class="line"><span>│       ├── nouns.csv</span></span>
+<span class="line"><span>│       ├── verbs.csv</span></span>
+<span class="line"><span>│       ├── adjectives.csv</span></span>
+<span class="line"><span>│       └── other.csv</span></span>
 <span class="line"><span>│</span></span>
 <span class="line"><span>└── A0/</span></span>
 <span class="line"><span>    ├── README.md</span></span>

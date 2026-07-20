@@ -384,7 +384,10 @@ Dutch-B1-Curriculum/
 │   │   ├── present-tense-to-be.md
 │   │   └── [more grammar files]
 │   └── vocabulary/
-│       └── master.csv
+│       ├── nouns.csv
+│       ├── verbs.csv
+│       ├── adjectives.csv
+│       └── other.csv
 │
 └── A0/
     ├── README.md

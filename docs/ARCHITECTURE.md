@@ -31,7 +31,7 @@ The authoritative sources for grammar and vocabulary.
 - Lesson metadata (dependencies, prerequisites)
 - Progression tracking (what comes before/after each concept)
 
-**Location:** `shared/grammar/`, `shared/vocabulary/`, `shared/csv/`
+**Location:** `shared/grammar/`, `shared/vocabulary/` (nouns.csv, verbs.csv, adjectives.csv, other.csv), `shared/csv/`
 
 ### Layer 3: Documentation
 
@@ -96,15 +96,14 @@ All lessons using that grammar automatically get the updated explanation.
 
 ### Vocabulary
 
-Vocabulary exists only once, in `shared/vocabulary/master.csv`.
+Vocabulary exists only once, split across four files by part of speech in
+`shared/vocabulary/`: `nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv` (adverbs,
+prepositions, conjunctions, pronouns, articles, determiners, interjections, numerals).
 
-Every vocabulary item has:
+Every vocabulary item has, at minimum:
 - Dutch word
 - English translation
-- Article (de/het)
-- Plural form
 - Pronunciation
-- Part of speech
 - CEFR level
 - Lesson introduced
 - Frequency
@@ -113,13 +112,19 @@ Every vocabulary item has:
 - Example translation
 - Notes
 
+Plus part-of-speech-specific fields:
+- Nouns: article (de/het), plural, diminutive
+- Verbs: verb type, full present tense, simple past, auxiliary, past participle
+- Adjectives: comparative, superlative, inflected form
+- Other: part of speech (adverb, preposition, conjunction, pronoun, article, determiner, interjection, numeral, phrase)
+
 When a lesson needs vocabulary, it either:
 
-1. References the master file: `**See:** `/shared/vocabulary/master.csv` (filter by lesson A0-01)`
+1. References the vocabulary files: `**See:** `/shared/vocabulary/nouns.csv` (filter by lesson A0-01)`
 2. Generates a CSV export for the lesson
 3. Embeds references to specific vocabulary entries
 
-Vocabulary CSVs are generated from the master, never maintained separately.
+Vocabulary CSVs are generated from the four source files, never maintained separately.
 
 ### Lessons
 
@@ -155,9 +160,8 @@ Lessons never contain full grammar explanations or vocabulary definitions.
 ## Data Flow
 
 ```
-Master Vocabulary CSV
+Vocabulary CSVs (nouns.csv, verbs.csv, adjectives.csv, other.csv)
     ↓
-    ├→ Vocabulary files (shared/vocabulary/)
     ├→ CSV exports for each lesson
     ├→ Anki deck generation
     └→ Vocabulary roadmap
@@ -194,7 +198,7 @@ Curriculum Map
 - `docs/GRAMMAR_MAP.md` -- For what grammar is available
 - `docs/VOCABULARY_ROADMAP.md` -- For what vocabulary is planned
 - `shared/grammar/` -- For grammar explanations
-- `shared/vocabulary/master.csv` -- For vocabulary definitions
+- `shared/vocabulary/nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv` -- For vocabulary definitions
 
 ### Reviews Reference
 
@@ -211,7 +215,7 @@ Curriculum Map
 
 - `docs/COMPETENCY_MAP.md` -- For which competency requires this vocabulary
 - `docs/CURRICULUM.md` -- For lesson placement
-- `shared/vocabulary/master.csv` -- For actual vocabulary
+- `shared/vocabulary/nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv` -- For actual vocabulary
 
 ---
 
@@ -250,8 +254,11 @@ Dutch-B1-Curriculum/
 │   │   ├── personal-pronouns.md
 │   │   ├── present-tense.md
 │   │   └── [more grammar files]
-│   ├── vocabulary/              (Vocabulary master)
-│   │   ├── master.csv           (Single source of truth)
+│   ├── vocabulary/              (Vocabulary, split by part of speech)
+│   │   ├── nouns.csv            (Single source of truth for nouns)
+│   │   ├── verbs.csv            (Single source of truth for verbs)
+│   │   ├── adjectives.csv       (Single source of truth for adjectives)
+│   │   ├── other.csv            (Adverbs, prepositions, pronouns, etc.)
 │   │   ├── A0.csv               (A0 filtered export)
 │   │   ├── A1.csv               (A1 filtered export)
 │   │   └── [more exports]

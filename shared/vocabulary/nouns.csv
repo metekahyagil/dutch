@@ -1,0 +1,23 @@
+Dutch,English,Article,Plural,Diminutive,Pronunciation,CEFR Level,Lesson Introduced,Frequency Rank,Topic,Example Sentence,Example Translation,Notes
+a,the letter a,--,--,--,AH,A0,A0-01,1,alphabet,Dit is de letter a.,This is the letter a.,Alphabet name; introduces an open AH sound.
+bee,the letter b,--,--,--,BAY,A0,A0-01,2,alphabet,Dit is de letter bee.,This is the letter b.,Alphabet name; Dutch long ee letter-name pattern.
+ee,the letter e,--,--,--,AY,A0,A0-01,3,alphabet,De letter ee klinkt als AY.,The letter e sounds like AY.,Alphabet name; Dutch letter e differs from English.
+ie,the letter i,--,--,--,EE,A0,A0-01,4,alphabet,Dit is de letter ie.,This is the letter i.,Alphabet name; Dutch i is named with EE sound.
+uu,the letter u,--,--,--,UU,A0,A0-01,5,alphabet,De letter uu is moeilijk.,The letter u is difficult.,Alphabet name; rounded Dutch UU sound.
+man,man,de,mannen,mannetje,MAHN,A0,A0-01,6,short_vowels,Dit is een man.,This is a man.,Clear short a in closed syllable; contrast with maan.
+bed,bed,het,bedden,bedje,BED,A0,A0-01,7,short_vowels,Dit is een bed.,This is a bed.,Clear short e; similar to English bed.
+vis,fish,de,vissen,visje,VISS,A0,A0-01,8,short_vowels,Dit is een vis.,This is a fish.,Clear short i like English sit.
+pot,pot,de,potten,potje,POT,A0,A0-01,9,short_vowels,Dit is een pot.,This is a pot.,Clear short o in closed syllable.
+bus,bus,de,bussen,busje,BUUS,A0,A0-01,10,short_vowels,Dit is een bus.,This is a bus.,Short Dutch u; rounded sound.
+maan,moon,de,manen,maantje,MAHN,A0,A0-01,11,long_vowels,Dit is de maan.,This is the moon.,Long aa; pairs with man to show vowel length contrast.
+been,leg,het,benen,beentje,BAYN,A0,A0-01,12,long_vowels,Dit is een been.,This is a leg.,Long ee approximated as AY without English glide.
+fiets,bicycle,de,fietsen,fietsje,FEETS,A0,A0-01,13,long_vowels,Dit is een fiets.,This is a bicycle.,Long ie with clear EE sound in common word.
+boom,tree,de,bomen,boompje,BOHM,A0,A0-01,14,long_vowels,Dit is een boom.,This is a tree.,Long oo; useful for showing double-vowel spelling.
+muur,wall,de,muren,muurtje,MUUR,A0,A0-01,15,long_vowels,Dit is een muur.,This is a wall.,Long uu; reinforces rounded lips and sustained vowel.
+huis,house,het,huizen,huisje,HOWS,A0,A0-01,16,diphthongs,Dit is een huis.,This is a house.,Key ui diphthong; no exact English equivalent.
+auto,car,de,auto's,autootje,OW-toh,A0,A0-01,18,diphthongs,Dit is een auto.,This is a car.,Clear au spelling; useful contrast with ou.
+ei,egg,het,eieren,eitje,EYE,A0,A0-01,19,diphthongs,Dit is een ei.,This is an egg.,Short word isolating ei diphthong.
+ijs,ice,het,--,ijsje,EYES,A0,A0-01,20,diphthongs,Dit is ijs.,This is ice.,Clear ij example; teaches ij and ei share same sound. Uncountable; diminutive ijsje means "ice cream".
+water,water,het,--,--,VAH-ter,A0,A0-01,24,consonants,Dit is water.,This is water.,Dutch w between English v and w. Uncountable in this sense.
+tafel,table,de,tafels,tafeltje,TAH-fuhl,A0,A0-01,25,stress_patterns,Dit is een tafel.,This is a table.,Shows common Dutch first-syllable stress.
+</content>

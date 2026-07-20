@@ -56,14 +56,21 @@ export default defineConfig({
                 { text: 'Lesson A0-05', link: '/A0/Competency-5-Counting-and-Quantities/A0-05' }
               ]
             },
-            {
-              text: 'Competency 6: Telling Time and Dates',
-              collapsed: false,
-              items: [
-                { text: 'Lesson A0-06', link: '/A0/Competency-6-Telling-Time-and-Dates/A0-06' }
-              ]
-            }
-           ]
+             {
+               text: 'Competency 6: Telling Time and Dates',
+               collapsed: false,
+               items: [
+                 { text: 'Lesson A0-06', link: '/A0/Competency-6-Telling-Time-and-Dates/A0-06' }
+               ]
+             },
+             {
+               text: 'Review Lesson 1: A0 Consolidation',
+               collapsed: false,
+               items: [
+                 { text: 'Lesson A0-R1', link: '/A0/Review-Lesson-1/A0-R1' }
+               ]
+             }
+            ]
         }
       ]
     },

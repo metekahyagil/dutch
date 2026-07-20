@@ -158,17 +158,14 @@ This lesson focuses on **phonetic teaching examples** rather than everyday vocab
 
 ## Master Vocabulary Database
 
-All vocabulary is stored in one place:
+All vocabulary is stored in `shared/vocabulary/`, split into four files by part of speech:
 
-**Location:** `shared/vocabulary/master.csv`
+**Location:** `shared/vocabulary/nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv`
 
-**Fields:**
+**Shared fields (all files):**
 - Dutch
 - English
-- Article (de/het/--)
-- Plural
 - Pronunciation
-- Part of Speech
 - CEFR Level
 - Lesson Introduced
 - Frequency Rank
@@ -177,13 +174,20 @@ All vocabulary is stored in one place:
 - Example Translation
 - Notes
 
-**Current Status:** Empty (to be populated in Phase 2)
+**Nouns.csv adds:** Article (de/het), Plural, Diminutive
+**Verbs.csv adds:** Verb Type, Present tense (ik / jij-u-hij-zij-het / wij-jullie-zij), Simple Past (singular/plural), Auxiliary, Past Participle
+**Adjectives.csv adds:** Comparative, Superlative, Inflected Form
+**Other.csv adds:** Part of Speech (adverb, preposition, conjunction, pronoun, article, determiner, interjection, numeral, phrase)
+
+See `docs/VOCABULARY_STANDARD.md` for the full field-by-field rules.
+
+**Current Status:** Only A0-01 populated (~25 words); the rest is to be populated in Phase 2.
 
 ---
 
 ## Generated Exports
 
-From the master database, we generate:
+From the four vocabulary files, we generate:
 
 ### By Level
 - `shared/csv/A0.csv` -- All A0 vocabulary
@@ -225,7 +229,7 @@ The "Frequency Rank" in the master database reflects this, with lower numbers be
 
 Every vocabulary entry must:
 
-- [ ] Exist in master.csv
+- [ ] Exist in the correct `shared/vocabulary/*.csv` file (nouns/verbs/adjectives/other)
 - [ ] Have pronunciation guidance
 - [ ] Have an example sentence
 - [ ] Be appropriate for its CEFR level
@@ -237,7 +241,7 @@ Every vocabulary entry must:
 
 ## Next Steps
 
-1. Complete master.csv with all A0-B1 vocabulary
+1. Complete `nouns.csv`, `verbs.csv`, `adjectives.csv`, `other.csv` with all A0-B1 vocabulary
 2. Generate CSV exports for each level
 3. Generate CSV exports for each lesson
 4. Generate CSV exports for each topic

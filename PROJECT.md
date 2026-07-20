@@ -94,7 +94,7 @@ A lesson is complete only when:
 - [ ] Lesson belongs to a competency and unit defined in `docs/COMPETENCY_MAP.md`
 - [ ] Lesson written and follows `docs/LESSON_STANDARD.md`
 - [ ] Grammar prerequisites verified in `docs/GRAMMAR_MAP.md`
-- [ ] Vocabulary exists in `shared/vocabulary/`
+- [ ] Vocabulary exists in the correct `shared/vocabulary/*.csv` file (nouns/verbs/adjectives/other)
 - [ ] Vocabulary CSV entry created in `shared/csv/`
 - [ ] Reading material contains only known grammar
 - [ ] Reading material contains only known vocabulary
@@ -110,7 +110,7 @@ A lesson is complete only when:
 
 ### Vocabulary
 
-- Vocabulary exists in ONE master database in `shared/vocabulary/`
+- Vocabulary exists in `shared/vocabulary/`, split by part of speech (nouns.csv, verbs.csv, adjectives.csv, other.csv)
 - Lessons reference vocabulary; they never define it
 - Every vocabulary entry has a single source of truth
 - CSV exports are generated from the master, not maintained separately
