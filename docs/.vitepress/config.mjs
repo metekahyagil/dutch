@@ -12,6 +12,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'A0 (Foundations)', link: '/A0/' },
+      { text: 'A1 (Beginner)', link: '/A1/' },
       { text: 'Docs', link: '/README.html' }
     ],
     
@@ -71,6 +72,21 @@ export default defineConfig({
                ]
              }
             ]
+        }
+      ],
+      '/A1/': [
+        {
+          text: 'A1 - Beginner',
+          items: [
+            { text: 'Overview', link: '/A1/' },
+            {
+              text: 'Competency 1: Basic Sentences and Word Order',
+              collapsed: false,
+              items: [
+                { text: 'Lesson A1-01', link: '/A1/Competency-1-Basic-Sentences-and-Word-Order/A1-01' }
+              ]
+            }
+          ]
         }
       ]
     },

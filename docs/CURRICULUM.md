@@ -35,7 +35,7 @@ Each lesson corresponds to ONE competency from `docs/COMPETENCY_MAP.md`.
 
 | # | Lesson ID | Competency | Topics | Status | Research Request | Notes |
 |---|-----------|-----------|--------|--------|------------------|-------|
-| 8 | A1-01 | Basic Sentences and Word Order | Present tense, SVO word order, basic questions | Pending | `shared/prompts/A1-01-research-request.md` | Core grammar patterns |
+| 8 | A1-01 | Basic Sentences and Word Order | Present tense, SVO word order, basic questions | Complete ✅ | `shared/prompts/A1-01-research-request.md` | Core grammar patterns |
 | 9 | A1-02 | Describing Daily Routines | Regular verbs, adverbs of frequency, time expressions | Pending | `shared/prompts/A1-02-research-request.md` | Everyday actions |
 | 10 | A1-03 | Food and Eating | Food vocabulary, preferences, countable/uncountable | Pending | `shared/prompts/A1-03-research-request.md` | Social dining context |
 | 11 | A1-04 | Shopping and Money | Shopping verbs, prices, negotiation, payment | Pending | `shared/prompts/A1-04-research-request.md` | Transactional Dutch |
@@ -83,7 +83,7 @@ Each lesson corresponds to ONE competency from `docs/COMPETENCY_MAP.md`.
 
 - **Total Lessons:** 34 (28 content lessons + 4 review lessons)
 - **Review Lessons:** After every 5-7 lessons, one review lesson with no new material
-- **Status:** 7/34 Complete (A0 level + A0-R1); 27 Pending
+- **Status:** 8/34 Complete (A0 level + A0-R1 + A1-01); 26 Pending
 
 ---
 
