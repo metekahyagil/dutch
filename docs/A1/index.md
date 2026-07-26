@@ -30,6 +30,12 @@ Master present-tense verb conjugation, SVO word order, the V2 (verb-second) rule
 
 - **Lesson A1-01:** Basic Sentences and Word Order
 
+### Competency 2: Describing Daily Routines
+
+Build on present-tense conjugation to describe complete daily routines using frequency adverbs, time expressions with correct prepositions, and sequencing words. Master the productive application of verb conjugation to any regular verb.
+
+- **Lesson A1-02:** Describing Daily Routines
+
 ---
 
 ## Next Steps

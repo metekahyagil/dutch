@@ -74,21 +74,28 @@ export default defineConfig({
             ]
         }
       ],
-      '/A1/': [
-        {
-          text: 'A1 - Beginner',
-          items: [
-            { text: 'Overview', link: '/A1/' },
-            {
-              text: 'Competency 1: Basic Sentences and Word Order',
-              collapsed: false,
-              items: [
-                { text: 'Lesson A1-01', link: '/A1/Competency-1-Basic-Sentences-and-Word-Order/A1-01' }
-              ]
-            }
-          ]
-        }
-      ]
+       '/A1/': [
+         {
+           text: 'A1 - Beginner',
+           items: [
+             { text: 'Overview', link: '/A1/' },
+             {
+               text: 'Competency 1: Basic Sentences and Word Order',
+               collapsed: false,
+               items: [
+                 { text: 'Lesson A1-01', link: '/A1/Competency-1-Basic-Sentences-and-Word-Order/A1-01' }
+               ]
+             },
+             {
+               text: 'Competency 2: Describing Daily Routines',
+               collapsed: false,
+               items: [
+                 { text: 'Lesson A1-02', link: '/A1/Competency-2-Describing-Daily-Routines/A1-02' }
+               ]
+             }
+           ]
+         }
+       ]
     },
     
     socialLinks: [
